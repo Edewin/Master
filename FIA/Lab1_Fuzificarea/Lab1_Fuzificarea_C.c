@@ -18,7 +18,7 @@
 
 float grad_apart(float _xc, float* _x, float* _y, int np);
 
-float    x[nfx][npx]={ {0,3,5,5},{3,5,10,15},{0,10,15,50} };
+float    x[nfx][npx]={ {0,3,5,5},{3,5,10,15},{10,10,15,50} };
 
 float miux[nfx][npx]={ {1,1,0,0}, {0,1,1,0}, {0,0,1,1} };
 
