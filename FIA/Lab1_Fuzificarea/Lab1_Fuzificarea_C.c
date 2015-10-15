@@ -32,16 +32,19 @@ int main()
 
     if(xc > x[experienta_mica][primul_element] && xc < x[experienta_mica][ultimul_element])
         tip_experienta = experienta_mica;
+		
     else if(xc > x[experienta_medie][primul_element] && xc < x[experienta_medie][ultimul_element])
         tip_experienta = experienta_medie;
+		
     else if(xc > x[experienta_mare][primul_element] && xc < x[experienta_mare][ultimul_element])
         tip_experienta = experienta_mare;
+		
     else
         printf("numarul nu face parte din intervalul de date\r\n");
 
     miu_xc = grad_apart(xc, x[tip_experienta],miux[tip_experienta] , npx );
 
-    printf("miu_xc = %f\r\n",miu_xc);
+    printf("miu_xc = %.2f\r\n",miu_xc);
 
     return 0;
 }
