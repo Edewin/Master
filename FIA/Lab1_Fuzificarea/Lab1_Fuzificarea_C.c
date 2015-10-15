@@ -2,7 +2,6 @@
 ** Title: FIA --> Lab. 1
 ** Description: Fuzificarea
 */
-
 #include<stdio.h>
 
 #define NFX 3
@@ -15,7 +14,7 @@
 #define EXPERIENTA_MEDIE 1
 #define EXPERIENTA_MARE 2
 
-// E mai ok sa folosim "double" in loc de "float"
+
 double grad_apart(double _xc, double* _x, double* _y, int np);
 
 double    x[NFX][NPX]={ {0,3,5,5},{3,5,10,15},{10,10,15,50} };
@@ -24,22 +23,22 @@ double miux[NFX][NPX]={ {1,1,0,0}, {0,1,1,0}, {0,0,1,1} };
 
 int main()
 {
-    double xc;
+    double xc = 0.0;
 
     printf("Introduceti o valoare pentru xc si apoi apasati Enter\n");
     scanf("%lf",&xc);
 
 	int tip_experienta = 0;
-	
+
     if(xc > x[EXPERIENTA_MICA][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MICA][ULTIMUL_ELEMENT])
         {
 			tip_experienta = EXPERIENTA_MICA;
-		}		
+		}
     else if(xc > x[EXPERIENTA_MEDIE][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MEDIE][ULTIMUL_ELEMENT])
         {
 			tip_experienta = EXPERIENTA_MEDIE;
 		}
-    else if(xc > x[EXPERIENTA_MARE][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MARE][ULTIMUL_ELEMENT])
+    else if(xc > x[EXPERIENTA_MARE][PRIMUL_ELEMENT])
         {
 			tip_experienta = EXPERIENTA_MARE;
 		}
@@ -47,10 +46,8 @@ int main()
         {
 			printf("Numarul nu face parte din intervalul de date\n");
 		}
-	
-	double miu_xc;
-	
-    miu_xc = grad_apart(xc, x[tip_experienta],miux[tip_experienta] , NPX );
+
+    double miu_xc = grad_apart(xc, x[tip_experienta],miux[tip_experienta] , NPX );
 
     printf("miu_xc = %.2f\n",miu_xc);
 
