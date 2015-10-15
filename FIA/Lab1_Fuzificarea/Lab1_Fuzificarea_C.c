@@ -5,51 +5,59 @@
 
 #include<stdio.h>
 
-#define nfx 3
-#define npx 4
+#define NFX 3
+#define NPX 4
 
-#define primul_element 0
-#define ultimul_element npx-1
+#define PRIMUL_ELEMENT	0
+#define ULTIMUL_ELEMENT (NPX-1)
 
-#define experienta_mica 0
-#define experienta_medie 1
-#define experienta_mare 2
+#define EXPERIENTA_MICA 0
+#define EXPERIENTA_MEDIE 1
+#define EXPERIENTA_MARE 2
 
+// E mai ok sa folosim "double" in loc de "float"
+double grad_apart(double _xc, double* _x, double* _y, int np);
 
-float grad_apart(float _xc, float* _x, float* _y, int np);
+double    x[NFX][NPX]={ {0,3,5,5},{3,5,10,15},{10,10,15,50} };
 
-float    x[nfx][npx]={ {0,3,5,5},{3,5,10,15},{10,10,15,50} };
-
-float miux[nfx][npx]={ {1,1,0,0}, {0,1,1,0}, {0,0,1,1} };
+double miux[NFX][NPX]={ {1,1,0,0}, {0,1,1,0}, {0,0,1,1} };
 
 int main()
 {
-    float xc, miu_xc;
-    int tip_experienta = 0;
+    double xc;
 
-    printf("Introduceti o valoare pentru xc si apoi apasati Enter\r\n");
-    scanf("%f",&xc);
+    printf("Introduceti o valoare pentru xc si apoi apasati Enter\n");
+    scanf("%lf",&xc);
 
-    if(xc > x[experienta_mica][primul_element] && xc < x[experienta_mica][ultimul_element])
-        tip_experienta = experienta_mica;
-		
-    else if(xc > x[experienta_medie][primul_element] && xc < x[experienta_medie][ultimul_element])
-        tip_experienta = experienta_medie;
-		
-    else if(xc > x[experienta_mare][primul_element] && xc < x[experienta_mare][ultimul_element])
-        tip_experienta = experienta_mare;
-		
+	int tip_experienta = 0;
+	
+    if(xc > x[EXPERIENTA_MICA][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MICA][ULTIMUL_ELEMENT])
+        {
+			tip_experienta = EXPERIENTA_MICA;
+		}		
+    else if(xc > x[EXPERIENTA_MEDIE][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MEDIE][ULTIMUL_ELEMENT])
+        {
+			tip_experienta = EXPERIENTA_MEDIE;
+		}
+    else if(xc > x[EXPERIENTA_MARE][PRIMUL_ELEMENT] && xc < x[EXPERIENTA_MARE][ULTIMUL_ELEMENT])
+        {
+			tip_experienta = EXPERIENTA_MARE;
+		}
     else
-        printf("numarul nu face parte din intervalul de date\r\n");
+        {
+			printf("Numarul nu face parte din intervalul de date\n");
+		}
+	
+	double miu_xc;
+	
+    miu_xc = grad_apart(xc, x[tip_experienta],miux[tip_experienta] , NPX );
 
-    miu_xc = grad_apart(xc, x[tip_experienta],miux[tip_experienta] , npx );
-
-    printf("miu_xc = %.2f\r\n",miu_xc);
+    printf("miu_xc = %.2f\n",miu_xc);
 
     return 0;
 }
 
-float grad_apart(float _xc, float* _x, float* _y, int np)
+double grad_apart(double _xc, double* _x, double* _y, int np)
 {
     int i = 0;
 
@@ -57,17 +65,19 @@ float grad_apart(float _xc, float* _x, float* _y, int np)
         return _y[0];
 
     for( i = 0; i < np-1; i++ )
-        if( _xc > _x[i] && _xc < _x[i+1] )
-        {
-            if( _y[i] < _y[i+1])
-                return ( (_xc - _x[i]) / (_x[i+1] - _x[i]) * (_y[i+1] - _y[i]) + _y[i] );
+		{
+			if( _xc > _x[i] && _xc < _x[i+1] )
+			{
+				if( _y[i] < _y[i+1])
+					return ( (_xc - _x[i]) / (_x[i+1] - _x[i]) * (_y[i+1] - _y[i]) + _y[i] );
 
-            if( _y[i] == _y[i+1] )
-                return _y[i];
+				if( _y[i] == _y[i+1] )
+					return _y[i];
 
-            if( _y[i] > _y[i+1] )
-                return ( (_x[i+1] - _xc)/(_x[i+1] - _x[i]) * (_y[i] - _y[i+1]) + _y[i+1] );
-        }
+				if( _y[i] > _y[i+1] )
+					return ( (_x[i+1] - _xc)/(_x[i+1] - _x[i]) * (_y[i] - _y[i+1]) + _y[i+1] );
+			}
+		}
     return _y[np-1];
 
 }
