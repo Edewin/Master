@@ -39,8 +39,8 @@ int npy = 3;
 
 // Matricea de reguli s-a definit dupa indexul vectorului y (nfy = 7)
 /* unde: 	NM   -> 0	|	Z   -> 3	|	PM -> 6		|
-			Nmed -> 1	|	Pmed-> 4	|				|
-			Nm   -> 2	|	Pm  -> 5	|				|
+		Nmed -> 1	|	Pmed-> 4	|			|
+		Nm   -> 2	|	Pm  -> 5	|			|
 *************************************************************/
 int reg[nfx1][nfx2] = { {0,1,1,2,2},{1,2,2,3,3},{2,3,3,3,5},{3,3,5,5,4},{5,5,4,4,6}};
 
