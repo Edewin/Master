@@ -77,9 +77,9 @@ float mandani(float Ec, float vEc)
 		{
 			/*
 			* Trebuie definit: 	-> R
-			*					-> reuniune
-			*					-> trunchiere
-			*					-> yc
+			*			-> reuniune
+			*			-> trunchiere
+			*			-> yc
 			*/
 			R = reuniune(R,trunchiere(gty[i], y[i], miuy[i]);  														
 		}
