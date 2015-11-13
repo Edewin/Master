@@ -1,5 +1,5 @@
 /***************************************************
-* Laborator 5	-> Reguli Fuzzy  -- Mandani --
+* Laborator 5	-> Reguli Fuzzy  -- Mamdani --
 *				-> Intersectia + elim_pcte_coliniare 
 *			 
 *	"Versiunea de la tabla"
@@ -44,7 +44,7 @@ int npy = 3;
 *************************************************************/
 int reg[nfx1][nfx2] = { {0,1,1,2,2},{1,2,2,3,3},{2,3,3,3,5},{3,3,5,5,4},{5,5,4,4,6}};
 
-// functia Mandani
+// functia Mamdani
 float mandani(float Ec, float vEc)
 {
 	float gaE[nfx1],gavE[nfx2],gty[nfy];  // gty = grad trunchiere y
